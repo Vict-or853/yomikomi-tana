@@ -8,7 +8,7 @@
 [![Python](https://img.shields.io/badge/Construido_con-Python_&_PySide6-3776AB.svg?logo=python&style=flat-square)](#)
 [![Licencia](https://img.shields.io/badge/Licencia-Freeware-brightgreen.svg?style=flat-square)](#)
 
-[Descargar última versión](#-descarga-e-instalación) • [Reportar un Bug](https://github.com/TU_USUARIO/yomikomi-tana/issues) • [Apoyar en Ko-fi](https://ko-fi.com/)
+[Descargar última versión](https://github.com/Vict-or853/yomikomi-tana/releases) • [Reportar un Bug](https://github.com/Vict-or853/yomikomi-tana/issues) • [Apoyar en Ko-fi](https://ko-fi.com/vict_or853)
 
 ---
 
