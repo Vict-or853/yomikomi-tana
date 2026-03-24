@@ -17,15 +17,8 @@
 </div>
 <div align="center">
 
-# 📚 YomiKomi Tana
-**El conversor definitivo y optimizador de Manga para E-Readers y Tablets**
-
-... (aquí van tus badges) ...
-
----
-
 ### 📺 Demo en Acción
-<video src="https://github.com/Vict-or853/yomikomi-tana/raw/main/yomikomi_demo(1).mp4" width="800" autoplay loop muted playsinline></video>
+<video src="https://github.com/Vict-or853/yomikomi-tana/commit/666420bd6766ca2ed0d2abadca826e192f81996c#diff-e4364ffd46cb25d34ce2efb5566b52c160ee8e889d045cf777bba327c4fd6f6b" width="800" autoplay loop muted playsinline></video>
 
 *Interfaz de usuario rápida y sencilla para optimizar tus archivos en minutos.*
 
