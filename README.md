@@ -46,14 +46,3 @@ Para usuarios regulares que solo quieren usar la aplicación:
 > **⚠️ Nota sobre Antivirus:** Al ser un software nuevo compilado con PyInstaller, Windows Defender o tu antivirus podrían mostrar una advertencia de "Software Desconocido" (Falso Positivo). Puedes omitir la advertencia de forma segura. El procesamiento es 100% local.
 
 ---
-
-## 🛠️ Desarrollo (Para Programadores)
-
-Si deseas clonar el repositorio, revisar el código fuente o compilar tu propio ejecutable, sigue estos pasos:
-
-### Prerrequisitos
-* Python 3.10 o superior.
-* Clonar este repositorio:
-  ```bash
-  git clone [https://github.com/TU_USUARIO/yomikomi-tana.git](https://github.com/TU_USUARIO/yomikomi-tana.git)
-  cd yomikomi-tana
