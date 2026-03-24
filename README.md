@@ -12,7 +12,7 @@
 
 ---
 
-<img src="121.PNG" alt="YomiKomi Tana Interface" width="800">
+<img src="120.PNG" alt="YomiKomi Tana Interface" width="800">
 
 </div>
 
