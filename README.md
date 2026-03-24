@@ -15,6 +15,22 @@
 <img src="120.PNG" alt="YomiKomi Tana Interface" width="800">
 
 </div>
+<div align="center">
+
+# 📚 YomiKomi Tana
+**El conversor definitivo y optimizador de Manga para E-Readers y Tablets**
+
+... (aquí van tus badges) ...
+
+---
+
+### 📺 Demo en Acción
+<video src="https://github.com/Vict-or853/yomikomi-tana/raw/main/yomikomi_demo.mp4" width="800" autoplay loop muted playsinline></video>
+
+*Interfaz de usuario rápida y sencilla para optimizar tus archivos en segundos.*
+
+---
+</div>
 
 ## 📖 Acerca del Proyecto
 
