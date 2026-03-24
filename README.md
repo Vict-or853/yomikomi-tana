@@ -25,9 +25,9 @@
 ---
 
 ### 📺 Demo en Acción
-<video src="https://github.com/Vict-or853/yomikomi-tana/raw/main/yomikomi_demo.mp4" width="800" autoplay loop muted playsinline></video>
+<video src="https://github.com/Vict-or853/yomikomi-tana/raw/main/yomikomi_demo(1).mp4" width="800" autoplay loop muted playsinline></video>
 
-*Interfaz de usuario rápida y sencilla para optimizar tus archivos en segundos.*
+*Interfaz de usuario rápida y sencilla para optimizar tus archivos en minutos.*
 
 ---
 </div>
