@@ -3,479 +3,289 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YomiKomi Tana | Manga to E-Reader Optimizer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>YomiKomi Tana | El Conversor Inteligente de Manga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #0f172a;          
-      --bg-card: #1e293b;          
-      --border-light: #334155;     
-      
-      --brand-purple: #8b5cf6;     
-      --brand-pink: #ec4899;       
-      --brand-cyan: #06b6d4;       
-      --brand-green: #10b981;
-      --brand-red: #ef4444;
-      
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
+      --primary-blue: #1e3a8a;
+      --accent-orange: #f97316;
+      --accent-yellow: #facc15;
+      --accent-cyan: #06b6d4;
+      --bg-dark: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --border-light: rgba(255,255,255,0.1);
     }
 
     * { box-sizing: border-box; }
 
     body {
-      margin: 0; font-family: 'Inter', sans-serif;
-      background: var(--bg-main); color: var(--text-primary);
-      line-height: 1.6; scroll-behavior: smooth;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #1e3a8a 0%, #0f172a 100%);
+      color: white;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      min-height: 100vh;
     }
 
-    .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+    .container { max-width: 1100px; margin: auto; padding: 20px; }
 
-    /* HEADER & IDIOMAS */
+    /* Header */
     header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 20px 0; border-bottom: 1px solid var(--border-light);
     }
-    .logo { font-weight: 900; font-size: 24px; letter-spacing: -0.5px; }
-    .logo span { color: var(--brand-cyan); }
-    
+
+    .logo {
+      font-weight: 800; font-size: 32px;
+      background: linear-gradient(90deg, #fff, #94a3b8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
     .lang-selector {
-      background: var(--bg-card); border: 1px solid var(--border-light);
-      color: var(--text-primary); padding: 8px 12px; border-radius: 6px;
-      font-size: 14px; font-weight: 600; cursor: pointer; outline: none;
+      background: var(--card-bg); border: 1px solid var(--border-light);
+      color: white; padding: 8px 12px; border-radius: 8px;
+      font-size: 14px; cursor: pointer; outline: none;
     }
 
+    /* Hero Section */
+    .hero { text-align: center; margin-top: 60px; padding-bottom: 40px; }
+    .hero h1 { font-size: clamp(40px, 8vw, 64px); margin-bottom: 10px; line-height: 1.1; font-weight: 800; }
+    .hero span { color: var(--accent-yellow); }
+    .hero p { font-size: 20px; opacity: 0.9; max-width: 700px; margin: 20px auto 40px; }
+
+    /* Botones */
     .btn {
-      background: var(--brand-purple); color: white; padding: 14px 28px; border-radius: 8px;
-      font-weight: 700; text-decoration: none; display: inline-block; transition: 0.2s; border: 1px solid #7c3aed;
+      background: linear-gradient(90deg, var(--accent-yellow), var(--accent-orange));
+      border: none; padding: 18px 40px; border-radius: 50px;
+      font-size: 18px; font-weight: 700; cursor: pointer;
+      color: #000; transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none; display: inline-block;
     }
-    .btn:hover { background: #7c3aed; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4); }
 
-    /* HERO */
-    .hero { text-align: center; padding: 60px 20px 40px; }
-    .hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
-    .hero h1 span { color: var(--brand-pink); }
-    .hero p { font-size: 20px; color: var(--text-secondary); max-width: 700px; margin: 0 auto 40px; }
-    
-    .hero-image-container { margin-top: 50px; position: relative; }
-    .hero-image {
-      width: 100%; max-width: 900px; border-radius: 12px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 1px solid var(--border-light);
+    /* App Media (Image & Video) */
+    .app-media {
+      margin: 40px auto; width: 100%; max-width: 900px;
+      border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border: 1px solid var(--border-light); display: block;
     }
 
-    /* CINTA DE COMPATIBILIDAD */
-    .compatibility-ribbon {
-      display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 15px;
-      padding: 30px 20px; border-bottom: 1px solid var(--border-light); margin-bottom: 60px;
-    }
-    .comp-badge {
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; color: var(--text-secondary);
-    }
-    .comp-title { font-size: 14px; font-weight: 700; color: var(--brand-cyan); text-transform: uppercase; letter-spacing: 1px; }
-
-    /* SECCIONES COMUNES */
-    .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 50px; padding-top: 40px;}
-    .section-title span { color: var(--brand-green); }
-
-    /* FUNCIONES */
+    /* Grid de Funciones */
     .features-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px; margin-bottom: 80px;
+      gap: 25px; margin-top: 80px;
     }
-    .feature-card { background: var(--bg-card); padding: 30px; border-radius: 12px; border: 1px solid var(--border-light); }
-    .feature-card h3 { margin-top: 0; color: var(--text-primary); font-size: 20px; }
-    .feature-card p { color: var(--text-secondary); font-size: 15px; margin-bottom: 0; }
+    .card {
+      background: var(--card-bg); padding: 30px; border-radius: 24px;
+      border: 1px solid var(--border-light); transition: 0.3s;
+    }
+    .card:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
+    .card .icon { font-size: 32px; margin-bottom: 15px; display: block; }
+    .card h3 { margin: 0 0 10px 0; color: var(--accent-yellow); font-size: 22px; }
 
-    /* COMUNIDAD Y FOROS */
-    .community-section { margin-bottom: 80px; }
+    /* Comunidad */
     .community-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin-top: 40px;
     }
     .comm-card {
-      background: linear-gradient(145deg, var(--bg-card), rgba(0,0,0,0.2));
-      padding: 30px; border-radius: 16px; border: 1px solid var(--border-light);
+      background: rgba(0,0,0,0.3); padding: 25px; border-radius: 20px;
       text-align: center; text-decoration: none; color: inherit;
-      transition: all 0.3s; display: block;
+      border: 1px solid var(--border-light); transition: 0.3s;
     }
-    .comm-card:hover { transform: translateY(-5px); border-color: var(--brand-cyan); box-shadow: 0 10px 25px rgba(6, 182, 212, 0.15); }
-    .comm-card .icon { font-size: 40px; display: block; margin-bottom: 15px; }
-    .comm-card h3 { margin: 0 0 10px 0; color: var(--text-primary); }
-    .comm-card p { color: var(--text-secondary); font-size: 14px; margin: 0; }
+    .comm-card:hover { border-color: var(--accent-cyan); background: rgba(6, 182, 212, 0.1); }
 
-    /* FAQ */
-    .faq-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-bottom: 80px;
-    }
-    .faq-card {
-      background: var(--bg-card); padding: 25px; border-radius: 12px;
-      border-left: 4px solid var(--brand-pink);
-    }
-    .faq-card h4 { margin: 0 0 10px 0; font-size: 18px; }
-    .faq-card p { margin: 0; color: var(--text-secondary); font-size: 14.5px; }
-
-    /* DESCARGA Y CHANGELOG */
-    .download-wrapper {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
-      background: radial-gradient(circle at left, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-      padding: 80px 20px; border-top: 1px solid var(--border-light);
-    }
-    .download-info h2 { font-size: 36px; margin-top: 0; }
-    .download-info p { color: var(--text-secondary); margin-bottom: 30px; font-size: 18px; }
-    
+    /* Changelog */
     .changelog-box {
-      background: #0b1120; border: 1px solid var(--border-light); border-radius: 12px;
-      padding: 25px; font-family: 'Courier New', Courier, monospace; font-size: 14px;
+      background: #000; border: 1px solid var(--border-light); border-radius: 15px;
+      padding: 25px; font-family: monospace; font-size: 14px; text-align: left;
+      max-width: 600px; margin: 40px auto;
     }
-    .changelog-box .version { color: var(--brand-green); font-weight: bold; margin-bottom: 15px; display: block; border-bottom: 1px dashed #333; padding-bottom: 10px; }
-    .changelog-box ul { padding-left: 20px; margin: 0; color: var(--text-secondary); line-height: 1.8; }
-    .changelog-box li span { color: var(--brand-purple); font-weight: bold; }
+    .changelog-box span { color: #10b981; }
 
-    /* FOOTER Y DONACIONES */
-    footer { text-align: center; padding: 60px 20px; border-top: 1px solid var(--border-light); }
-    .donation-box {
-      max-width: 600px; margin: 0 auto 40px; background: rgba(6, 182, 212, 0.05);
-      border: 1px solid var(--brand-cyan); padding: 25px; border-radius: 12px;
+    footer {
+      text-align: center; padding: 60px 0; border-top: 1px solid var(--border-light);
+      margin-top: 100px; background: rgba(0,0,0,0.2);
     }
-    .donation-box p { font-size: 14px; color: var(--text-secondary); margin-bottom: 15px; }
+    .kofi-btn {
+      background: #29abe0; color: white; padding: 12px 25px;
+      border-radius: 12px; text-decoration: none; font-weight: 700;
+      display: inline-block; margin-top: 15px;
+    }
 
-    @media (max-width: 900px) {
-      .download-wrapper { grid-template-columns: 1fr; text-align: center; }
-      .faq-grid { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 40px; }
+      header { flex-direction: column; gap: 20px; }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="logo">YomiKomi Tana <small style="font-size: 12px; vertical-align: middle; opacity: 0.6;">v1.0.0</small></div>
+      <div style="display: flex; gap: 15px; align-items: center;">
+        <select id="lang" class="lang-selector">
+          <option value="es">🇪🇸 ES</option>
+          <option value="en">🇬🇧 EN</option>
+          <option value="pt">🇧🇷 PT</option>
+          <option value="ja">🇯🇵 JP</option>
+        </select>
+        <a href="#download" id="nav_btn" class="btn" style="padding: 10px 20px; font-size: 14px;">Descargar</a>
+      </div>
+    </header>
 
-<div class="container">
-  <header>
-    <div class="logo">YomiKomi <span>Tana</span></div>
-    <div style="display: flex; gap: 15px; align-items: center;">
-      <select id="lang" class="lang-selector">
-        <option value="es">🇪🇸 Español</option>
-        <option value="en">🇬🇧 English</option>
-        <option value="pt">🇧🇷 Português</option>
-        <option value="ja">🇯🇵 日本語</option>
-      </select>
-      <a href="#descarga" id="nav_btn" class="btn" style="padding: 10px 20px;">Descargar</a>
-    </div>
-  </header>
+    <section class="hero">
+      <div style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; display: inline-block; font-size: 14px; margin-bottom: 20px;" id="badge">🚀 Proyecto Freeware para la comunidad</div>
+      <h1 id="hero_title">Manga perfecto para tu <span>E-Reader</span></h1>
+      <p id="hero_desc">Optimiza tus tomos favoritos. Quita márgenes, divide páginas dobles y convierte a EPUB/CBZ con un solo clic.</p>
+      <a href="#download" class="btn" id="hero_btn">Empezar ahora — Es Gratis</a>
+      
+      <img src="120.png" alt="YomiKomi Tana" class="app-media" id="main_img">
+    </section>
 
-  <section class="hero">
-    <h1 id="hero_title">El conversor definitivo para <br><span>lectores de Manga.</span></h1>
-    <p id="hero_desc">Prepara tus mangas y webtoons para Kindle o Tablets. Elimina bordes blancos y exporta a EPUB/CBZ en un solo clic.</p>
-    <a href="#descarga" id="hero_btn" class="btn" style="padding: 18px 40px; font-size: 18px;">Obtener para Windows</a>
-    
-    <div class="hero-image-container">
-      <img src="121.PNG" alt="Interfaz de YomiKomi Tana" class="hero-image">
-    </div>
-  </section>
+    <section style="text-align: center; margin: 80px 0;">
+      <h2 id="demo_title" style="font-size: 32px; font-weight: 800; margin-bottom: 30px;">Mira la magia en <span>acción</span></h2>
+      <video src="yomikomi_demo.mp4" class="app-media" autoplay loop muted playsinline></video>
+    </section>
 
-  <div class="compatibility-ribbon">
-    <span id="ribbon_title" class="comp-title">Soporte Nativo:</span>
-    <span class="comp-badge">📦 .ZIP / .RAR</span>
-    <span class="comp-badge">📚 .CBZ / .EPUB</span>
-    <span class="comp-badge">📱 Kindle</span>
-    <span class="comp-badge">📖 Kobo</span>
-    <span id="ribbon_lang" class="comp-badge">🌍 Multi-idioma</span>
+    <section class="features-grid">
+      <div class="card">
+        <span class="icon">✂️</span>
+        <h3 id="f1_title">Auto-Crop Inteligente</h3>
+        <p id="f1_desc">Detecta y elimina automáticamente los bordes blancos innecesarios para que el dibujo ocupe toda tu pantalla.</p>
+      </div>
+      <div class="card">
+        <span class="icon">📖</span>
+        <h3 id="f2_title">Modo Manga (RTL)</h3>
+        <p id="f2_desc">Configura la lectura de derecha a izquierda nativamente en archivos EPUB para una experiencia auténtica.</p>
+      </div>
+      <div class="card">
+        <span class="icon">📏</span>
+        <h3 id="f3_title">Split Double Pages</h3>
+        <p id="f3_desc">¿Escaneos de dos páginas? La app los corta a la mitad automáticamente para una lectura fluida en vertical.</p>
+      </div>
+      <div class="card">
+        <span class="icon">📱</span>
+        <h3 id="f4_title">Especial para Webtoons</h3>
+        <p id="f4_desc">Convierte el formato de scroll infinito en páginas individuales perfectamente numeradas para Kindle o Kobo.</p>
+      </div>
+    </section>
+
+    <section id="comunidad" style="margin-top: 100px; text-align: center;">
+      <h2 id="comm_title" style="font-size: 32px; font-weight: 800;">Únete a la <span>Comunidad</span></h2>
+      <div class="community-grid">
+        <a href="https://github.com/Vict-or853/yomikomi-tana/issues/new?template=bug_report.md" target="_blank" class="comm-card">
+          <span style="font-size: 30px;">🐛</span>
+          <h3 id="c1_t">Reportar Bug</h3>
+          <p id="c1_d">Ayúdanos a mejorar reportando errores.</p>
+        </a>
+        <a href="https://github.com/Vict-or853/yomikomi-tana/discussions" target="_blank" class="comm-card">
+          <span style="font-size: 30px;">💬</span>
+          <h3 id="c2_t">Foro de Ayuda</h3>
+          <p id="c2_d">Resuelve tus dudas con otros usuarios.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="download" style="margin-top: 100px; text-align: center;">
+      <h2 id="dl_title">Descargar YomiKomi Tana</h2>
+      <a href="https://github.com/Vict-or853/yomikomi-tana/releases/download/v1.0.0/YomiKomi_Setup.exe" class="btn" style="margin-top: 20px;">Download Installer (.exe)</a>
+      <p style="opacity: 0.6; font-size: 14px; margin-top: 10px;">Windows 10/11 | 100% Offline & Seguro</p>
+
+      <div class="changelog-box">
+        <div style="border-bottom: 1px dashed #333; padding-bottom: 10px; margin-bottom: 15px;">
+          <span>Terminal ></span> YomiKomi_Release --v 1.0.0
+        </div>
+        <ul style="list-style: none; padding: 0; margin: 0; opacity: 0.8; line-height: 2;">
+          <li id="ch1">v [+] Lanzamiento oficial Freeware.</li>
+          <li id="ch2">v [+] Motor Auto-Crop inteligente.</li>
+          <li id="ch3">v [+] Soporte multi-idioma integrado.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p id="footer_text">© 2026 YomiKomi Tana | Desarrollado por <strong>@Vict-or853</strong></p>
+      <a href="https://ko-fi.com/Vict-or853" target="_blank" class="kofi-btn">Invítame a un café en Ko-fi ☕</a>
+    </footer>
   </div>
 
-  <section id="funciones">
-    <h2 id="feat_title" class="section-title">Diseñado para la <span>mejor lectura</span></h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <h3 id="f1_title" style="color: var(--brand-pink);">1. Auto-Crop y División</h3>
-        <p id="f1_desc">El algoritmo detecta y recorta los márgenes blancos inútiles. Divide automáticamente las páginas dobles para que encajen perfectas en pantallas verticales.</p>
-      </div>
-      <div class="feature-card">
-        <h3 id="f2_title" style="color: var(--brand-cyan);">2. Global y Accesible</h3>
-        <p id="f2_desc">Interfaz construida para la comunidad mundial. Soporte integrado para <strong>Inglés, Español, Português y Japonés</strong>.</p>
-      </div>
-      <div class="feature-card">
-        <h3 id="f3_title" style="color: var(--brand-purple);">3. Procesamiento Offline</h3>
-        <p id="f3_desc">Tus archivos nunca salen de tu PC. A diferencia de los conversores web, YomiKomi procesa gigabytes de manga en segundos de forma 100% privada.</p>
-      </div>
-    </div>
-  </section>
+  <script>
+    const t = {
+      es: {
+        nav_btn: "Descargar", badge: "🚀 Proyecto Freeware para la comunidad",
+        hero_title: "Manga perfecto para tu <span>E-Reader</span>",
+        hero_desc: "Optimiza tus tomos favoritos. Quita márgenes, divide páginas dobles y convierte a EPUB/CBZ con un solo clic.",
+        hero_btn: "Empezar ahora — Es Gratis",
+        demo_title: "Mira la magia en <span>acción</span>",
+        f1_title: "Auto-Crop Inteligente", f1_desc: "Detecta y elimina bordes blancos innecesarios automáticamente.",
+        f2_title: "Modo Manga (RTL)", f2_desc: "Lectura de derecha a izquierda nativa para una experiencia auténtica.",
+        f3_title: "Split Double Pages", f3_desc: "Corta spreads automáticamente para lectura vertical fluida.",
+        f4_title: "Especial para Webtoons", f4_desc: "Convierte scroll infinito en páginas numeradas perfectas.",
+        comm_title: "Únete a la <span>Comunidad</span>",
+        c1_t: "Reportar Bug", c1_d: "Ayúdanos a mejorar reportando errores.",
+        c2_t: "Foro de Ayuda", c2_d: "Resuelve tus dudas con otros usuarios.",
+        dl_title: "Descargar YomiKomi Tana",
+        footer_text: "© 2026 YomiKomi Tana | Desarrollado por @Vict-or853"
+      },
+      en: {
+        nav_btn: "Download", badge: "🚀 Freeware project for the community",
+        hero_title: "Perfect Manga for your <span>E-Reader</span>",
+        hero_desc: "Optimize your favorite volumes. Crop margins, split double pages, and convert to EPUB/CBZ in one click.",
+        hero_btn: "Start now — It's Free",
+        demo_title: "See the magic in <span>action</span>",
+        f1_title: "Smart Auto-Crop", f1_desc: "Automatically detects and removes unnecessary white borders.",
+        f2_title: "Manga Mode (RTL)", f2_desc: "Native right-to-left reading for an authentic experience.",
+        f3_title: "Split Double Pages", f3_desc: "Automatically cuts spreads for fluid vertical reading.",
+        f4_title: "Webtoon Ready", f4_desc: "Converts infinite scroll into perfectly numbered pages.",
+        comm_title: "Join the <span>Community</span>",
+        c1_t: "Report Bug", c1_d: "Help us improve by reporting errors.",
+        c2_t: "Help Forum", c2_d: "Solve your doubts with other users.",
+        dl_title: "Download YomiKomi Tana",
+        footer_text: "© 2026 YomiKomi Tana | Developed by @Vict-or853"
+      },
+      pt: {
+        nav_btn: "Baixar", badge: "🚀 Projeto Freeware para a comunidade",
+        hero_title: "Mangá perfeito para o seu <span>E-Reader</span>",
+        hero_desc: "Otimize seus volumes favoritos. Recorte margens, divida páginas duplas e converta para EPUB/CBZ em um clique.",
+        hero_btn: "Começar agora — É Grátis",
+        demo_title: "Veja a mágica em <span>ação</span>",
+        f1_title: "Auto-Crop Inteligente", f1_desc: "Detecta e remove bordas brancas desnecessárias automaticamente.",
+        f2_title: "Modo Mangá (RTL)", f2_desc: "Leitura nativa da direita para a esquerda para uma experiência autêntica.",
+        f3_title: "Split Double Pages", f3_desc: "Corta páginas duplas automaticamente para leitura vertical fluida.",
+        f4_title: "Especial para Webtoons", f4_desc: "Converte scroll infinito em páginas numeradas perfeitas.",
+        comm_title: "Junte-se à <span>Comunidade</span>",
+        c1_t: "Reportar Bug", c1_d: "Ajude-nos a melhorar relatando erros.",
+        c2_t: "Fórum de Ajuda", c2_d: "Resolva suas dúvidas com outros usuários.",
+        dl_title: "Baixar YomiKomi Tana",
+        footer_text: "© 2026 YomiKomi Tana | Desenvolvido por @Vict-or853"
+      },
+      ja: {
+        nav_btn: "ダウンロード", badge: "🚀 コミュニティのためのフリーウェアプロジェクト",
+        hero_title: "あなたの<span>Eリーダー</span>に最適な漫画を",
+        hero_desc: "お気に入りの巻を最適化。余白のカット、見開き分割、EPUB/CBZ変換をワンクリックで。",
+        hero_btn: "今すぐ開始 — 無料です",
+        demo_title: "魔法が<span>動く</span>様子を見る",
+        f1_title: "スマート自動クロップ", f1_desc: "不要な白枠を自動的に検出して削除します。",
+        f2_title: "漫画モード (RTL)", f2_desc: "本格的な体験のためのネイティブな右から左への読書設定。",
+        f3_title: "見開き分割", f3_desc: "垂直方向の読書のために見開きを自動的にカットします。",
+        f4_title: "Webtoon対応", f4_desc: "無限スクロールを完璧に番号付けされたページに変換します。",
+        comm_title: "<span>コミュニティ</span>に参加する",
+        c1_t: "バグ報告", c1_d: "エラーを報告して改善にご協力ください。",
+        c2_t: "ヘルプフォーラム", c2_d: "他のユーザーと疑問を解決しましょう。",
+        dl_title: "YomiKomi Tanaをダウンロード",
+        footer_text: "© 2026 YomiKomi Tana | 開発者 @Vict-or853"
+      }
+    };
 
-  <section id="comunidad" class="community-section">
-    <h2 id="comm_title" class="section-title"><span style="color: var(--brand-cyan);">Comunidad</span> y Soporte</h2>
-    <p id="comm_desc" style="text-align: center; color: var(--text-secondary); margin-bottom: 40px; max-width: 600px; margin: 0 auto 50px;">
-      Únete a los demás usuarios de YomiKomi Tana. Comparte archivos, ayúdanos a mejorar la app reportando bugs o resuelve tus dudas.
-    </p>
-    
-    <div class="community-grid">
-      <a href="#" class="comm-card bugs">
-        <span class="icon">🐛</span>
-        <h3 id="comm_b1_t" style="color: var(--brand-red);">Reporte de Errores</h3>
-        <p id="comm_b1_d">¿Algo falló? Sube tu log de error o captura de pantalla para que podamos arreglarlo en la próxima versión.</p>
-      </a>
-      <a href="#" class="comm-card requests">
-        <span class="icon">📚</span>
-        <h3 id="comm_b2_t" style="color: var(--brand-purple);">Solicitudes de Manga</h3>
-        <p id="comm_b2_d">¿Buscas un manga específico y no lo encuentras? Pide el CBZ a la comunidad o comparte tus tomos optimizados.</p>
-      </a>
-      <a href="#" class="comm-card">
-        <span class="icon">💬</span>
-        <h3 id="comm_b3_t" style="color: var(--brand-cyan);">Foro de Ayuda</h3>
-        <p id="comm_b3_d">Discusión general, dudas sobre cómo configurar el gamma, resoluciones para Kobo/Kindle y consejos útiles.</p>
-      </a>
-    </div>
-  </section>
-
-  <section id="faq">
-    <h2 id="faq_title" class="section-title">Preguntas <span style="color: var(--brand-pink);">Frecuentes</span></h2>
-    <div class="faq-grid">
-      <div class="faq-card">
-        <h4 id="faq_q1">¿Es YomiKomi Tana gratuito?</h4>
-        <p id="faq_a1">Sí, es 100% Freeware. Puedes usar todas sus funciones sin límites. Si la app te ahorra tiempo, considera apoyar el desarrollo en Ko-fi.</p>
-      </div>
-      <div class="faq-card">
-        <h4 id="faq_q2">Mi antivirus dice que el archivo es sospechoso</h4>
-        <p id="faq_a2">Es un falso positivo común en programas nuevos empaquetados con Python. El código es seguro y procesa tus archivos localmente.</p>
-      </div>
-      <div class="faq-card">
-        <h4 id="faq_q3">¿Soporta la lectura de derecha a izquierda?</h4>
-        <p id="faq_a3">¡Por supuesto! Activa el "Modo Manga (RTL)" antes de convertir a EPUB y tu Kindle detectará el estilo japonés.</p>
-      </div>
-      <div class="faq-card">
-        <h4 id="faq_q4">¿Por qué falla al leer algunos archivos .RAR?</h4>
-        <p id="faq_a4">Asegúrate de que el archivo RAR no tenga contraseña. Si el problema persiste, repórtalo en nuestra sección de comunidad.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="descarga" class="download-wrapper">
-    <div class="download-info">
-      <h2 id="dl_title">Empieza a usar YomiKomi Tana</h2>
-      <p id="dl_desc">Software Freeware sin publicidad. Únete a los lectores que ya están optimizando su biblioteca digital.</p>
-      <a href="https://www.mediafire.com/file_premium/k58xbsrca2tpjza/YomiKomi_Setup.exe/file" id="dl_btn" target="_blank" class="btn" style="background: var(--brand-green); border-color: var(--brand-green); width: 100%; text-align: center; font-size: 18px;">
-        Descargar Instalador (.exe)
-      </a>
-      <p id="dl_sec" style="font-size: 13px; margin-top: 15px;">Windows 10/11 • 100% Seguro</p>
-    </div>
-    
-    <div class="changelog-box">
-      <span id="ch_0" class="version">Terminal > YomiKomi_Release --v 1.0.0</span>
-      <ul>
-        <li id="ch_1"><span>[+]</span> Lanzamiento oficial Freeware.</li>
-        <li id="ch_2"><span>[+]</span> Integración de motor Auto-Crop inteligente.</li>
-        <li id="ch_3"><span>[+]</span> Soporte nativo para UnRAR sin configuración.</li>
-        <li id="ch_4"><span>[+]</span> Añadida base multi-idioma (EN, ES, PT, JA).</li>
-        <li id="ch_5"><span>[*]</span> Optimización en la creación de metadatos EPUB.</li>
-      </ul>
-    </div>
-  </section>
-
-  <footer>
-    <div class="donation-box">
-      <h3 id="kofi_title" style="color: var(--text-primary); margin-top: 0;">Mantén el proyecto vivo ☕</h3>
-      <p id="kofi_desc">YomiKomi Tana es gratuito y sin anuncios. Tus donaciones en Ko-fi me ayudan a pagar el servidor, desarrollar nuevas funciones y adquirir dispositivos para asegurar compatibilidad.</p>
-      <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'L3L41WAWJ2');kofiwidget2.draw();</script> 
-      </a>
-    </div>
-    <p><span id="footer_cred">Desarrollado con pasión por</span> <strong>@Vict_or853</strong></p>
-  </footer>
-</div>
-
-<script>
-const t = {
-  es: {
-    nav_btn: "Descargar",
-    hero_title: "El conversor definitivo para <br><span>lectores de Manga.</span>",
-    hero_desc: "Prepara tus mangas y webtoons para Kindle o Tablets. Elimina bordes blancos y exporta a EPUB/CBZ en un solo clic.",
-    hero_btn: "Obtener para Windows",
-    ribbon_title: "Soporte Nativo:",
-    ribbon_lang: "🌍 Multi-idioma",
-    feat_title: "Diseñado para la <span>mejor lectura</span>",
-    f1_title: "1. Auto-Crop y División",
-    f1_desc: "El algoritmo detecta y recorta los márgenes blancos inútiles. Divide automáticamente las páginas dobles para encajar en pantallas verticales.",
-    f2_title: "2. Global y Accesible",
-    f2_desc: "Interfaz construida para la comunidad mundial. Soporte integrado para <strong>Inglés, Español, Português y Japonés</strong>.",
-    f3_title: "3. Procesamiento Offline",
-    f3_desc: "Tus archivos nunca salen de tu PC. A diferencia de los conversores web, procesa gigabytes de manga en segundos de forma 100% privada.",
-    comm_title: "<span style='color: var(--brand-cyan);'>Comunidad</span> y Soporte",
-    comm_desc: "Únete a los demás usuarios de YomiKomi Tana. Comparte archivos, ayúdanos a mejorar la app reportando bugs o resuelve tus dudas.",
-    comm_b1_t: "Reporte de Errores",
-    comm_b1_d: "¿Algo falló? Sube tu log de error o captura de pantalla para que podamos arreglarlo en la próxima versión.",
-    comm_b2_t: "Solicitudes de Manga",
-    comm_b2_d: "¿Buscas un manga específico? Pide el CBZ a la comunidad o comparte tus tomos optimizados.",
-    comm_b3_t: "Foro de Ayuda",
-    comm_b3_d: "Discusión general, dudas sobre cómo configurar el gamma, resoluciones para Kobo/Kindle y consejos útiles.",
-    faq_title: "Preguntas <span style='color: var(--brand-pink);'>Frecuentes</span>",
-    faq_q1: "¿Es YomiKomi Tana gratuito?",
-    faq_a1: "Sí, es 100% Freeware. Puedes usar todas sus funciones sin límites. Si la app te ahorra tiempo, considera apoyar el desarrollo en Ko-fi.",
-    faq_q2: "Mi antivirus dice que el archivo es sospechoso",
-    faq_a2: "Es un falso positivo común en programas nuevos empaquetados con Python. El código es seguro y procesa tus archivos localmente.",
-    faq_q3: "¿Soporta la lectura de derecha a izquierda?",
-    faq_a3: "¡Por supuesto! Activa el 'Modo Manga (RTL)' antes de convertir a EPUB y tu Kindle detectará el estilo japonés.",
-    faq_q4: "¿Por qué falla al leer algunos archivos .RAR?",
-    faq_a4: "Asegúrate de que el archivo RAR no tenga contraseña. Si el problema persiste, repórtalo en nuestra sección de comunidad.",
-    dl_title: "Empieza a usar YomiKomi Tana",
-    dl_desc: "Software Freeware sin publicidad. Únete a los lectores que ya están optimizando su biblioteca digital.",
-    dl_btn: "Descargar Instalador (.exe)",
-    dl_sec: "Windows 10/11 • 100% Seguro",
-    ch_0: "Terminal > YomiKomi_Release --v 1.0.0",
-    ch_1: "<span>[+]</span> Lanzamiento oficial Freeware.",
-    ch_2: "<span>[+]</span> Integración de motor Auto-Crop inteligente.",
-    ch_3: "<span>[+]</span> Soporte nativo para UnRAR sin configuración.",
-    ch_4: "<span>[+]</span> Añadida base multi-idioma (EN, ES, PT, JA).",
-    ch_5: "<span>[*]</span> Optimización en la creación de metadatos EPUB.",
-    kofi_title: "Mantén el proyecto vivo ☕",
-    kofi_desc: "YomiKomi Tana es gratuito y sin anuncios. Tus donaciones en Ko-fi me ayudan a pagar el servidor, desarrollar nuevas funciones y adquirir dispositivos para asegurar compatibilidad.",
-    kofi_btn: "Apoyar en Ko-fi",
-    footer_cred: "Desarrollado con pasión por"
-  },
-  en: {
-    nav_btn: "Download",
-    hero_title: "The ultimate converter for <br><span>Manga readers.</span>",
-    hero_desc: "Prepare your manga and webtoons for Kindle or Tablets. Remove white borders and export to EPUB/CBZ in a single click.",
-    hero_btn: "Get for Windows",
-    ribbon_title: "Native Support:",
-    ribbon_lang: "🌍 Multi-language",
-    feat_title: "Designed for the <span>best reading</span>",
-    f1_title: "1. Auto-Crop & Split",
-    f1_desc: "The algorithm detects and crops useless white margins. Automatically splits double pages to fit perfectly on vertical screens.",
-    f2_title: "2. Global & Accessible",
-    f2_desc: "Interface built for the worldwide community. Built-in support for <strong>English, Spanish, Portuguese, and Japanese</strong>.",
-    f3_title: "3. Offline Processing",
-    f3_desc: "Your files never leave your PC. Unlike web converters, it processes gigabytes of manga in seconds, 100% privately.",
-    comm_title: "<span style='color: var(--brand-cyan);'>Community</span> and Support",
-    comm_desc: "Join other YomiKomi Tana users. Share files, help us improve the app by reporting bugs, or solve your doubts.",
-    comm_b1_t: "Bug Reports",
-    comm_b1_d: "Did something fail? Upload your error log or screenshot so we can fix it in the next release.",
-    comm_b2_t: "Manga Requests",
-    comm_b2_d: "Looking for a specific manga? Ask the community for the CBZ or share your optimized volumes.",
-    comm_b3_t: "Help Forum",
-    comm_b3_d: "General discussion, questions about gamma configuration, Kobo/Kindle resolutions, and useful tips.",
-    faq_title: "Frequently Asked <span style='color: var(--brand-pink);'>Questions</span>",
-    faq_q1: "Is YomiKomi Tana free?",
-    faq_a1: "Yes, it is 100% Freeware. You can use all its features without limits. If the app saves you time, consider supporting on Ko-fi.",
-    faq_q2: "My antivirus says the file is suspicious",
-    faq_a2: "It's a common false positive for new Python-packaged software. The code is safe and processes files locally.",
-    faq_q3: "Does it support Right-to-Left (RTL) reading?",
-    faq_a3: "Absolutely! Enable 'Manga Mode (RTL)' before converting to EPUB and your Kindle will detect the Japanese style.",
-    faq_q4: "Why does it fail to read some .RAR files?",
-    faq_a4: "Make sure the RAR file does not have a password. If the problem persists, report it in our community section.",
-    dl_title: "Start using YomiKomi Tana",
-    dl_desc: "Ad-free Freeware software. Join the readers who are already optimizing their digital library.",
-    dl_btn: "Download Installer (.exe)",
-    dl_sec: "Windows 10/11 • 100% Safe",
-    ch_0: "Terminal > YomiKomi_Release --v 1.0.0",
-    ch_1: "<span>[+]</span> Official Freeware release.",
-    ch_2: "<span>[+]</span> Smart Auto-Crop engine integration.",
-    ch_3: "<span>[+]</span> Native UnRAR support with no setup.",
-    ch_4: "<span>[+]</span> Multi-language base added (EN, ES, PT, JA).",
-    ch_5: "<span>[*]</span> EPUB metadata creation optimization.",
-    kofi_title: "Keep the project alive ☕",
-    kofi_desc: "YomiKomi Tana is free and ad-free. Your Ko-fi donations help me pay for servers, code new features, and buy devices to ensure compatibility.",
-    kofi_btn: "Support on Ko-fi",
-    footer_cred: "Developed with passion by"
-  },
-  pt: {
-    nav_btn: "Baixar",
-    hero_title: "O conversor definitivo para <br><span>leitores de Mangá.</span>",
-    hero_desc: "Prepare seus mangás e webtoons para Kindle ou Tablets. Remova bordas brancas e exporte para EPUB/CBZ com um clique.",
-    hero_btn: "Obter para Windows",
-    ribbon_title: "Suporte Nativo:",
-    ribbon_lang: "🌍 Multilíngue",
-    feat_title: "Projetado para a <span>melhor leitura</span>",
-    f1_title: "1. Auto-Crop e Divisão",
-    f1_desc: "O algoritmo detecta e corta margens brancas inúteis. Divide automaticamente páginas duplas para caber em telas verticais.",
-    f2_title: "2. Global e Acessível",
-    f2_desc: "Interface construída para a comunidade mundial. Suporte integrado para <strong>Inglês, Espanhol, Português e Japonês</strong>.",
-    f3_title: "3. Processamento Offline",
-    f3_desc: "Seus arquivos nunca saem do seu PC. Ao contrário dos conversores web, processa gigabytes de mangá em segundos, 100% privado.",
-    comm_title: "<span style='color: var(--brand-cyan);'>Comunidade</span> e Suporte",
-    comm_desc: "Junte-se a outros usuários do YomiKomi Tana. Compartilhe arquivos, ajude a melhorar o app relatando bugs ou tire suas dúvidas.",
-    comm_b1_t: "Relatório de Erros",
-    comm_b1_d: "Algo deu errado? Envie seu log de erro ou captura de tela para que possamos corrigir na próxima versão.",
-    comm_b2_t: "Pedidos de Mangá",
-    comm_b2_d: "Procurando um mangá específico? Peça o CBZ à comunidade ou compartilhe seus volumes otimizados.",
-    comm_b3_t: "Fórum de Ajuda",
-    comm_b3_d: "Discussão geral, dúvidas sobre configuração de gamma, resoluções para Kobo/Kindle e dicas úteis.",
-    faq_title: "Perguntas <span style='color: var(--brand-pink);'>Frequentes</span>",
-    faq_q1: "O YomiKomi Tana é gratuito?",
-    faq_a1: "Sim, é 100% Freeware. Você pode usar todos os recursos sem limites. Se o app te ajuda, considere apoiar no Ko-fi.",
-    faq_q2: "Meu antivírus diz que o arquivo é suspeito",
-    faq_a2: "É um falso positivo comum em novos softwares Python. O código é seguro e processa seus arquivos localmente.",
-    faq_q3: "Suporta leitura da direita para a esquerda (RTL)?",
-    faq_a3: "Com certeza! Ative o 'Modo Mangá (RTL)' antes de converter para EPUB e seu Kindle detectará o estilo japonês.",
-    faq_q4: "Por que falha ao ler alguns arquivos .RAR?",
-    faq_a4: "Certifique-se de que o arquivo RAR não tem senha. Se o problema persistir, relate na nossa seção da comunidade.",
-    dl_title: "Comece a usar YomiKomi Tana",
-    dl_desc: "Software Freeware sem anúncios. Junte-se aos leitores que já estão otimizando sua biblioteca digital.",
-    dl_btn: "Baixar Instalador (.exe)",
-    dl_sec: "Windows 10/11 • 100% Seguro",
-    ch_0: "Terminal > YomiKomi_Release --v 1.0.0",
-    ch_1: "<span>[+]</span> Lançamento oficial Freeware.",
-    ch_2: "<span>[+]</span> Integração do motor Auto-Crop inteligente.",
-    ch_3: "<span>[+]</span> Suporte nativo UnRAR sem configuração.",
-    ch_4: "<span>[+]</span> Base multilíngue adicionada (EN, ES, PT, JA).",
-    ch_5: "<span>[*]</span> Otimização na criação de metadados EPUB.",
-    kofi_title: "Mantenha o projeto vivo ☕",
-    kofi_desc: "YomiKomi Tana é gratuito e sem anúncios. Suas doações no Ko-fi me ajudam a pagar servidores, desenvolver novos recursos e comprar dispositivos.",
-    kofi_btn: "Apoiar no Ko-fi",
-    footer_cred: "Desenvolvido com paixão por"
-  },
-  ja: {
-    nav_btn: "ダウンロード",
-    hero_title: "マンガ読者のための<br><span>究極のコンバーター。</span>",
-    hero_desc: "Kindleやタブレット用にマンガを準備します。余白を削除し、ワンクリックでEPUB/CBZにエクスポートします。",
-    hero_btn: "Windows版を入手",
-    ribbon_title: "ネイティブサポート:",
-    ribbon_lang: "🌍 多言語",
-    feat_title: "最高の読書体験のために<span>設計</span>",
-    f1_title: "1. 自動クロップと分割",
-    f1_desc: "不要な余白を検出しトリミングします。縦画面にぴったり収まるように見開きページを自動的に分割します。",
-    f2_title: "2. グローバルで使いやすい",
-    f2_desc: "世界中のコミュニティ向けに構築されたインターフェース。<strong>英語、スペイン語、ポルトガル語、日本語</strong>を標準サポート。",
-    f3_title: "3. オフライン処理",
-    f3_desc: "ファイルがPCの外部に出ることはありません。YomiKomiはギガバイト単位のマンガを完全にプライベートな状態で処理します。",
-    comm_title: "<span style='color: var(--brand-cyan);'>コミュニティ</span>とサポート",
-    comm_desc: "YomiKomi Tanaのユーザーと繋がりましょう。ファイルを共有したり、バグを報告してアプリの改善に協力してください。",
-    comm_b1_t: "バグレポート",
-    comm_b1_d: "問題が発生しましたか？次回のリリースで修正できるよう、エラーログやスクリーンショットをアップロードしてください。",
-    comm_b2_t: "マンガのリクエスト",
-    comm_b2_d: "特定のマンガをお探しですか？コミュニティにCBZをリクエストするか、最適化されたファイルを共有してください。",
-    comm_b3_t: "ヘルプフォーラム",
-    comm_b3_d: "一般的な議論、ガンマ設定に関する質問、Kobo/Kindleの解像度、役立つヒントなど。",
-    faq_title: "よくある<span style='color: var(--brand-pink);'>質問</span>",
-    faq_q1: "YomiKomi Tanaは無料ですか？",
-    faq_a1: "はい、100%フリーウェアです。すべての機能を無制限で使用できます。アプリが役に立った場合はKo-fiでのサポートをご検討ください。",
-    faq_q2: "ウイルス対策ソフトが警告を出します",
-    faq_a2: "Pythonでパッケージ化された新しいソフトウェアでよくある誤検知です。コードは安全でローカルで処理されます。",
-    faq_q3: "右から左への読み込み(RTL)に対応していますか？",
-    faq_a3: "もちろんです！EPUBに変換する前に「マンガモード(RTL)」を有効にすると、Kindleが日本式を検出します。",
-    faq_q4: "一部の.RARファイルが読み込めないのはなぜですか？",
-    faq_a4: "RARファイルにパスワードがかかっていないことを確認してください。問題が解決しない場合はコミュニティに報告してください。",
-    dl_title: "YomiKomi Tanaを使い始める",
-    dl_desc: "広告なしのフリーウェア。すでにデジタルライブラリを最適化している読者の仲間入りをしましょう。",
-    dl_btn: "インストーラー (.exe)",
-    dl_sec: "Windows 10/11 • 100% 安全",
-    ch_0: "Terminal > YomiKomi_Release --v 1.0.0",
-    ch_1: "<span>[+]</span> 公式フリーウェアリリース。",
-    ch_2: "<span>[+]</span> スマート自動クロップエンジンの統合。",
-    ch_3: "<span>[+]</span> 設定不要のネイティブUnRARサポート。",
-    ch_4: "<span>[+]</span> 多言語ベースの追加 (EN, ES, PT, JA)。",
-    ch_5: "<span>[*]</span> EPUBメタデータ作成の最適化。",
-    kofi_title: "プロジェクトを支援する ☕",
-    kofi_desc: "YomiKomi Tanaは無料です。Ko-fiでの寄付は、サーバー費用の支払いや互換性を確保するためのデバイス購入に役立ちます。",
-    kofi_btn: "Ko-fiでサポート",
-    footer_cred: "開発："
-  }
-};
-
-document.getElementById("lang").onchange = e => {
-  let l = t[e.target.value];
-  for (let k in l) {
-    let element = document.getElementById(k);
-    if (element) {
-      element.innerHTML = l[k];
-    }
-  }
-};
-</script>
-
+    document.getElementById("lang").onchange = e => {
+      let l = t[e.target.value];
+      for (let k in l) {
+        let el = document.getElementById(k);
+        if (el) el.innerHTML = l[k];
+      }
+    };
+  </script>
 </body>
 </html>
