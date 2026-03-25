@@ -88,23 +88,20 @@
     .feature-card p { color: var(--text-secondary); font-size: 15px; margin-bottom: 0; }
 
     /* COMUNIDAD Y FOROS */
-    <div class="community-grid">
-      <a href="https://github.com/Vict-or853/yomikomi-tana/issues" target="_blank" class="comm-card bugs">
-        <span class="icon">🐛</span>
-        <h3 id="comm_b1_t" style="color: var(--brand-red);">Reporte de Errores</h3>
-        <p id="comm_b1_d">¿Algo falló? Sube tu log de error o captura de pantalla para que podamos arreglarlo en la próxima versión.</p>
-      </a>
-      <a href="https://github.com/Vict-or853/yomikomi-tana/issues/new?template=feature_request.md" target="_blank" class="comm-card requests">
-        <span class="icon">📚</span>
-        <h3 id="comm_b2_t" style="color: var(--brand-purple);">Solicitudes de Manga</h3>
-        <p id="comm_b2_d">¿Buscas un manga específico? Pide el CBZ a la comunidad o comparte tus tomos optimizados.</p>
-      </a>
-      <a href="https://github.com/Vict-or853/yomikomi-tana/discussions" target="_blank" class="comm-card">
-        <span class="icon">💬</span>
-        <h3 id="comm_b3_t" style="color: var(--brand-cyan);">Foro de Ayuda</h3>
-        <p id="comm_b3_d">Discusión general, dudas sobre cómo configurar el gamma, resoluciones para Kobo/Kindle y consejos útiles.</p>
-      </a>
-    </div>
+    .community-section { margin-bottom: 80px; }
+    .community-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
+    }
+    .comm-card {
+      background: linear-gradient(145deg, var(--bg-card), rgba(0,0,0,0.2));
+      padding: 30px; border-radius: 16px; border: 1px solid var(--border-light);
+      text-align: center; text-decoration: none; color: inherit;
+      transition: all 0.3s; display: block;
+    }
+    .comm-card:hover { transform: translateY(-5px); border-color: var(--brand-cyan); box-shadow: 0 10px 25px rgba(6, 182, 212, 0.15); }
+    .comm-card .icon { font-size: 40px; display: block; margin-bottom: 15px; }
+    .comm-card h3 { margin: 0 0 10px 0; color: var(--text-primary); }
+    .comm-card p { color: var(--text-secondary); font-size: 14px; margin: 0; }
 
     /* FAQ */
     .faq-grid {
