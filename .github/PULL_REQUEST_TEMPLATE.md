@@ -5,16 +5,16 @@
 ## Tipo de cambio
 
 - [ ] Bug fix
-- [ ] Nueva funcion
-- [ ] Documentacion
+- [ ] Nueva función
+- [ ] Documentación
 - [ ] Refactor interno
 - [ ] Release/build
 
 ## Pruebas
 
-- [ ] Probe la app localmente
-- [ ] Probe la web localmente
-- [ ] Actualice capturas o documentacion si aplica
+- [ ] Probé la app localmente
+- [ ] Probé la web localmente
+- [ ] Actualicé capturas o documentación si aplica
 
 ## Notas
 
