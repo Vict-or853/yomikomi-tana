@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vict-or853.github.io/yomikomi-tana/sitemap.xml
