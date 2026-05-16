@@ -1,18 +1,18 @@
-# Politica de seguridad
+# Política de seguridad
 
 ## Versiones soportadas
 
-| Version | Soporte |
+| Versión | Soporte |
 | --- | --- |
-| 1.0.x | Si |
+| 1.0.x | Sí |
 
 ## Reportar una vulnerabilidad
 
-Si encuentras un problema de seguridad, evita publicar datos sensibles en un issue publico. Abre un reporte con la informacion minima necesaria o contacta al mantenedor del proyecto por un canal privado disponible en su perfil de GitHub.
+Si encuentras un problema de seguridad, evita publicar datos sensibles en un issue público. Abre un reporte con la información mínima necesaria o contacta al mantenedor por un canal privado disponible en su perfil de GitHub.
 
 Incluye:
 
-- Version de YomiKomi Tana.
+- Versión de YomiKomi Tana.
 - Sistema operativo.
 - Pasos para reproducir.
 - Impacto esperado.

@@ -1,4 +1,4 @@
-name: Solicitar funcion
+name: Solicitar función
 description: Propone una mejora o nueva capacidad para YomiKomi Tana.
 title: "[Feature]: "
 labels:
@@ -8,14 +8,14 @@ body:
     id: problem
     attributes:
       label: Problema o necesidad
-      placeholder: Que intentas hacer y que parte se siente incomoda o falta?
+      placeholder: ¿Qué intentas hacer y qué parte se siente incómoda o falta?
     validations:
       required: true
   - type: textarea
     id: solution
     attributes:
-      label: Solucion propuesta
-      placeholder: Describe como imaginas que deberia funcionar.
+      label: Solución propuesta
+      placeholder: Describe cómo imaginas que debería funcionar.
     validations:
       required: true
   - type: dropdown
@@ -23,13 +23,13 @@ body:
     attributes:
       label: Area
       options:
-        - Conversion EPUB
-        - Conversion CBZ
-        - Recorte/imagenes
+        - Conversión EPUB
+        - Conversión CBZ
+        - Recorte/imágenes
         - Webtoons
         - Interfaz
         - Instalador
-        - Documentacion
+        - Documentación
         - Otro
   - type: textarea
     id: notes

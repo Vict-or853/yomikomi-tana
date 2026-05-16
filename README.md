@@ -1,39 +1,29 @@
 # YomiKomi Tana
 
-YomiKomi Tana es una aplicacion de escritorio gratuita y 100% offline para convertir, recortar y organizar manga, comics y webtoons locales en formatos listos para e-readers y tablets.
+YomiKomi Tana es una aplicación de escritorio gratuita y 100% offline para convertir, recortar y organizar manga, cómics y webtoons locales en formatos listos para e-readers y tablets.
 
-[Descargar ultima version](https://github.com/Vict-or853/yomikomi-tana/releases) · [Reportar un bug](https://github.com/Vict-or853/yomikomi-tana/issues/new?template=bug_report.yml) · [Apoyar en Ko-fi](https://ko-fi.com/vict_or853)
+[Descargar última versión](https://github.com/Vict-or853/yomikomi-tana/releases) | [Reportar un bug](https://github.com/Vict-or853/yomikomi-tana/issues/new?template=bug_report.yml) | [Apoyar en Ko-fi](https://ko-fi.com/vict_or853)
 
 ![Interfaz de YomiKomi Tana](assets/yomikomi-main.png)
 
 ## Funciones principales
 
-| Funcion | Para que sirve |
+| Función | Para qué sirve |
 | --- | --- |
-| Auto-crop inteligente | Recorta margenes blancos o negros para aprovechar mejor la pantalla. |
-| Division de paginas dobles | Separa escaneos horizontales en paginas verticales. |
-| Modo webtoon | Convierte tiras largas en paginas individuales. |
+| Auto-crop inteligente | Recorta márgenes blancos o negros para aprovechar mejor la pantalla. |
+| División de páginas dobles | Separa escaneos horizontales en páginas verticales. |
+| Modo webtoon | Convierte tiras largas en páginas individuales. |
 | Modo manga RTL | Genera EPUB con lectura de derecha a izquierda. |
 | Perfiles de dispositivo | Ajusta salida para Kindle, Kobo y tablets. |
 | Procesamiento offline | Tus archivos se quedan en tu equipo. |
 
-## Web del proyecto
-
-La landing page vive en `index.html` y no necesita build. Para verla localmente, abre el archivo en tu navegador:
-
-```powershell
-start .\index.html
-```
-
-Si activas GitHub Pages con Actions, el workflow incluido en `.github/workflows/pages.yml` publica la web automaticamente desde la rama `main`.
-
 ## Descarga
 
 1. Entra a [Releases](https://github.com/Vict-or853/yomikomi-tana/releases).
-2. Descarga `YomiKomi_Setup.exe` de la version mas reciente.
-3. Ejecuta el instalador en Windows 10 o Windows 11.
+2. Descarga el instalador de la versión más reciente.
+3. Ejecuta la app en Windows 10 o Windows 11.
 
-> Windows Defender puede mostrar una alerta de aplicacion desconocida en proyectos nuevos compilados con PyInstaller. El procesamiento de YomiKomi Tana es local.
+Windows puede mostrar una advertencia de SmartScreen en aplicaciones nuevas. Descarga siempre desde el repositorio oficial.
 
 ## Formatos
 
@@ -41,23 +31,30 @@ Entradas compatibles: carpetas, `.zip`, `.rar`, `.cbz`, `.cbr`.
 
 Salidas compatibles: `.epub`, `.cbz`.
 
-## Desarrollo y Git
+## Privacidad
 
-Este repo incluye una base para mantener el proyecto ordenado:
+YomiKomi Tana procesa los archivos localmente. No necesitas subir tu biblioteca a la nube para convertirla.
 
-- `.gitignore` para builds, caches, archivos pesados y temporales.
-- `.gitattributes` para finales de linea y binarios.
-- Plantillas de issues y pull requests.
-- `CHANGELOG.md` para documentar releases.
-- `docs/git-workflow.md` con una convencion simple de ramas y commits.
-- Workflow de GitHub Pages.
+## Sitio web
 
-Consulta [docs/git-workflow.md](docs/git-workflow.md) antes de publicar cambios.
+La página del proyecto vive en `index.html` y se publica con GitHub Pages desde la rama principal.
+
+Para verla localmente:
+
+```powershell
+python -m http.server 8001 --bind 127.0.0.1
+```
+
+Después abre `http://127.0.0.1:8001/`.
 
 ## Comunidad
 
-Los reportes de bugs, ideas de funciones y mejoras de documentacion son bienvenidos. Usa las plantillas de GitHub para incluir sistema operativo, version de la app, pasos para reproducir y capturas cuando aplique.
+Los reportes de bugs, ideas de funciones y mejoras de documentación son bienvenidos. Al abrir un issue, incluye versión de la app, sistema operativo, pasos para reproducir y capturas cuando aplique.
+
+## Mantenimiento
+
+El repositorio incluye plantillas de issues, plantilla de pull request, changelog, configuración de GitHub Pages y una guía corta de flujo de trabajo en [docs/git-workflow.md](docs/git-workflow.md).
 
 ## Licencia
 
-El proyecto se distribuye como freeware. Si vas a aceptar contribuciones externas de codigo, conviene agregar un archivo de licencia formal antes de mezclar cambios grandes.
+YomiKomi Tana se distribuye como freeware. El código, los textos y los assets conservan los derechos de su autor salvo que se indique una licencia diferente.

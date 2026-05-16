@@ -1,33 +1,33 @@
 # Flujo de Git para YomiKomi Tana
 
-Esta guia mantiene el historial legible y reduce archivos pesados en el repo.
+Esta guía mantiene el historial legible y reduce archivos pesados en el repositorio.
 
-## Preparacion local
+## Preparación local
 
 ```powershell
 git clone https://github.com/Vict-or853/yomikomi-tana.git
 cd yomikomi-tana
-git checkout -b feature/web-refresh
+git checkout -b feature/nombre-del-cambio
 ```
 
 ## Trabajo diario
 
 ```powershell
 git status
-git add index.html styles.css assets .github docs README.md CHANGELOG.md CONTRIBUTING.md SECURITY.md .gitignore .gitattributes
-git commit -m "feat: refresh project website"
-git push -u origin feature/web-refresh
+git add .
+git commit -m "feat: describe el cambio"
+git push -u origin feature/nombre-del-cambio
 ```
 
-Despues abre un pull request hacia `main`.
+Después abre un pull request hacia `main`.
 
-## Reglas utiles
+## Reglas útiles
 
 - No subas archivos `.zip`, `.rar`, `.cbz`, `.cbr`, `.epub`, builds ni instaladores al historial normal.
 - Publica instaladores desde GitHub Releases.
-- Mantiene `main` siempre estable.
+- Mantén `main` siempre estable.
 - Usa ramas cortas y descriptivas.
-- Haz commits pequenos cuando el cambio tenga varias partes.
+- Haz commits pequeños cuando el cambio tenga varias partes.
 - Actualiza `CHANGELOG.md` antes de crear una release.
 
 ## Publicar GitHub Pages
@@ -35,9 +35,9 @@ Despues abre un pull request hacia `main`.
 1. En GitHub, abre `Settings > Pages`.
 2. En `Build and deployment`, selecciona `GitHub Actions`.
 3. Sube el workflow `.github/workflows/pages.yml`.
-4. Al hacer push a `main`, GitHub generara la pagina.
+4. Al hacer push a `main`, GitHub generará la página.
 
-La URL esperada sera:
+La URL esperada será:
 
 ```text
 https://vict-or853.github.io/yomikomi-tana/
