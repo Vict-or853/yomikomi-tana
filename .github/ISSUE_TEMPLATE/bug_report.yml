@@ -1,0 +1,53 @@
+name: Reportar bug
+description: Avisa de un error reproducible en YomiKomi Tana.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Gracias por reportar un problema. Completa lo esencial para poder reproducirlo.
+  - type: input
+    id: version
+    attributes:
+      label: Version de YomiKomi Tana
+      placeholder: "v1.0.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: windows
+    attributes:
+      label: Windows
+      options:
+        - Windows 11
+        - Windows 10
+        - Otro
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+      placeholder: |
+        1. Abro...
+        2. Selecciono...
+        3. Ocurre...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Resultado actual
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Capturas o contexto adicional
+      description: No subas manga, comics o archivos privados con copyright.

@@ -1,291 +1,256 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YomiKomi Tana | El Conversor Inteligente de Manga</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-blue: #1e3a8a;
-      --accent-orange: #f97316;
-      --accent-yellow: #facc15;
-      --accent-cyan: #06b6d4;
-      --bg-dark: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.7);
-      --border-light: rgba(255,255,255,0.1);
-    }
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YomiKomi Tana | Conversor de manga para e-readers</title>
+    <meta
+      name="description"
+      content="YomiKomi Tana convierte, recorta y organiza manga, comics y webtoons locales en EPUB o CBZ para Kindle, Kobo y tablets."
+    >
+    <meta name="theme-color" content="#101114">
+    <meta property="og:title" content="YomiKomi Tana">
+    <meta property="og:description" content="Optimiza manga, comics y webtoons para e-readers y tablets. Gratis, offline y para Windows.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/yomikomi-main.png">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top, #1e3a8a 0%, #0f172a 100%);
-      color: white;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      min-height: 100vh;
-    }
-
-    .container { max-width: 1100px; margin: auto; padding: 20px; }
-
-    /* Header */
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 0; border-bottom: 1px solid var(--border-light);
-    }
-
-    .logo {
-      font-weight: 800; font-size: 32px;
-      background: linear-gradient(90deg, #fff, #94a3b8);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-
-    .lang-selector {
-      background: var(--card-bg); border: 1px solid var(--border-light);
-      color: white; padding: 8px 12px; border-radius: 8px;
-      font-size: 14px; cursor: pointer; outline: none;
-    }
-
-    /* Hero Section */
-    .hero { text-align: center; margin-top: 60px; padding-bottom: 40px; }
-    .hero h1 { font-size: clamp(40px, 8vw, 64px); margin-bottom: 10px; line-height: 1.1; font-weight: 800; }
-    .hero span { color: var(--accent-yellow); }
-    .hero p { font-size: 20px; opacity: 0.9; max-width: 700px; margin: 20px auto 40px; }
-
-    /* Botones */
-    .btn {
-      background: linear-gradient(90deg, var(--accent-yellow), var(--accent-orange));
-      border: none; padding: 18px 40px; border-radius: 50px;
-      font-size: 18px; font-weight: 700; cursor: pointer;
-      color: #000; transition: transform 0.2s, box-shadow 0.2s;
-      text-decoration: none; display: inline-block;
-    }
-    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4); }
-
-    /* App Media (Image & Video) */
-    .app-media {
-      margin: 40px auto; width: 100%; max-width: 900px;
-      border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      border: 1px solid var(--border-light); display: block;
-    }
-
-    /* Grid de Funciones */
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px; margin-top: 80px;
-    }
-    .card {
-      background: var(--card-bg); padding: 30px; border-radius: 24px;
-      border: 1px solid var(--border-light); transition: 0.3s;
-    }
-    .card:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
-    .card .icon { font-size: 32px; margin-bottom: 15px; display: block; }
-    .card h3 { margin: 0 0 10px 0; color: var(--accent-yellow); font-size: 22px; }
-
-    /* Comunidad */
-    .community-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; margin-top: 40px;
-    }
-    .comm-card {
-      background: rgba(0,0,0,0.3); padding: 25px; border-radius: 20px;
-      text-align: center; text-decoration: none; color: inherit;
-      border: 1px solid var(--border-light); transition: 0.3s;
-    }
-    .comm-card:hover { border-color: var(--accent-cyan); background: rgba(6, 182, 212, 0.1); }
-
-    /* Changelog */
-    .changelog-box {
-      background: #000; border: 1px solid var(--border-light); border-radius: 15px;
-      padding: 25px; font-family: monospace; font-size: 14px; text-align: left;
-      max-width: 600px; margin: 40px auto;
-    }
-    .changelog-box span { color: #10b981; }
-
-    footer {
-      text-align: center; padding: 60px 0; border-top: 1px solid var(--border-light);
-      margin-top: 100px; background: rgba(0,0,0,0.2);
-    }
-    .kofi-btn {
-      background: #29abe0; color: white; padding: 12px 25px;
-      border-radius: 12px; text-decoration: none; font-weight: 700;
-      display: inline-block; margin-top: 15px;
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 40px; }
-      header { flex-direction: column; gap: 20px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <div class="logo">YomiKomi Tana <small style="font-size: 12px; vertical-align: middle; opacity: 0.6;">v1.0.0</small></div>
-      <div style="display: flex; gap: 15px; align-items: center;">
-        <select id="lang" class="lang-selector">
-          <option value="es">🇪🇸 ES</option>
-          <option value="en">🇬🇧 EN</option>
-          <option value="pt">🇧🇷 PT</option>
-          <option value="ja">🇯🇵 JP</option>
-        </select>
-        <a href="#download" id="nav_btn" class="btn" style="padding: 10px 20px; font-size: 14px;">Descargar</a>
-      </div>
+    <header class="site-header">
+      <nav class="nav" aria-label="Navegacion principal">
+        <a class="brand" href="#inicio" aria-label="YomiKomi Tana inicio">
+          <span class="brand-mark" aria-hidden="true">Y</span>
+          <span>YomiKomi Tana</span>
+        </a>
+        <div class="nav-links">
+          <a href="#funciones">Funciones</a>
+          <a href="#flujo">Flujo</a>
+          <a href="#descarga">Descarga</a>
+          <a href="#repo">GitHub</a>
+        </div>
+        <a class="nav-action" href="https://github.com/Vict-or853/yomikomi-tana/releases" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/>
+          </svg>
+          <span>Descargar</span>
+        </a>
+      </nav>
     </header>
 
-    <section class="hero">
-      <div style="background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; display: inline-block; font-size: 14px; margin-bottom: 20px;" id="badge">🚀 Proyecto Freeware para la comunidad</div>
-      <h1 id="hero_title">Manga perfecto para tu <span>E-Reader</span></h1>
-      <p id="hero_desc">Optimiza tus tomos favoritos. Quita márgenes, divide páginas dobles y convierte a EPUB/CBZ con un solo clic.</p>
-      <a href="#download" class="btn" id="hero_btn">Empezar ahora — Es Gratis</a>
-      
-      <img src="120.PNG" alt="YomiKomi Tana" class="app-media" id="main_img">
-    </section>
-
-    <section style="text-align: center; margin: 80px 0;">
-      <h2 id="demo_title" style="font-size: 32px; font-weight: 800; margin-bottom: 30px;">Mira la magia en <span>acción</span></h2>
-      <video src="yomikomi_demo(1).mp4" class="app-media" autoplay loop muted playsinline></video>
-    </section>
-
-    <section class="features-grid">
-      <div class="card">
-        <span class="icon">✂️</span>
-        <h3 id="f1_title">Auto-Crop Inteligente</h3>
-        <p id="f1_desc">Detecta y elimina automáticamente los bordes blancos innecesarios para que el dibujo ocupe toda tu pantalla.</p>
-      </div>
-      <div class="card">
-        <span class="icon">📖</span>
-        <h3 id="f2_title">Modo Manga (RTL)</h3>
-        <p id="f2_desc">Configura la lectura de derecha a izquierda nativamente en archivos EPUB para una experiencia auténtica.</p>
-      </div>
-      <div class="card">
-        <span class="icon">📏</span>
-        <h3 id="f3_title">Split Double Pages</h3>
-        <p id="f3_desc">¿Escaneos de dos páginas? La app los corta a la mitad automáticamente para una lectura fluida en vertical.</p>
-      </div>
-      <div class="card">
-        <span class="icon">📱</span>
-        <h3 id="f4_title">Especial para Webtoons</h3>
-        <p id="f4_desc">Convierte el formato de scroll infinito en páginas individuales perfectamente numeradas para Kindle o Kobo.</p>
-      </div>
-    </section>
-
-    <section id="comunidad" style="margin-top: 100px; text-align: center;">
-      <h2 id="comm_title" style="font-size: 32px; font-weight: 800;">Únete a la <span>Comunidad</span></h2>
-      <div class="community-grid">
-        <a href="https://github.com/Vict-or853/yomikomi-tana/issues/new?template=bug_report.md" target="_blank" class="comm-card">
-          <span style="font-size: 30px;">🐛</span>
-          <h3 id="c1_t">Reportar Bug</h3>
-          <p id="c1_d">Ayúdanos a mejorar reportando errores.</p>
-        </a>
-        <a href="https://github.com/Vict-or853/yomikomi-tana/discussions" target="_blank" class="comm-card">
-          <span style="font-size: 30px;">💬</span>
-          <h3 id="c2_t">Foro de Ayuda</h3>
-          <p id="c2_d">Resuelve tus dudas con otros usuarios.</p>
-        </a>
-      </div>
-    </section>
-
-    <section id="download" style="margin-top: 100px; text-align: center;">
-      <h2 id="dl_title">Descargar YomiKomi Tana</h2>
-      <a href="https://github.com/Vict-or853/yomikomi-tana/releases/download/v1.0.0/YomiKomi_Setup.exe" class="btn" style="margin-top: 20px;">Download Installer (.exe)</a>
-      <p style="opacity: 0.6; font-size: 14px; margin-top: 10px;">Windows 10/11 | 100% Offline & Seguro</p>
-
-      <div class="changelog-box">
-        <div style="border-bottom: 1px dashed #333; padding-bottom: 10px; margin-bottom: 15px;">
-          <span>Terminal ></span> YomiKomi_Release --v 1.0.0
+    <main id="contenido">
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <img class="hero-media" src="assets/yomikomi-main.png" alt="Interfaz de YomiKomi Tana mostrando un tomo cargado y opciones de conversion">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Freeware para Windows 10 y 11</p>
+          <h1 id="hero-title">YomiKomi Tana</h1>
+          <p class="hero-copy">
+            Convierte manga, comics y webtoons locales en tomos digitales listos para Kindle, Kobo y tablets.
+            Recorta margenes, divide paginas dobles y exporta a EPUB o CBZ sin subir tus archivos a internet.
+          </p>
+          <div class="hero-actions" aria-label="Acciones principales">
+            <a class="button button-primary" href="https://github.com/Vict-or853/yomikomi-tana/releases" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/>
+              </svg>
+              Descargar v1.0.0
+            </a>
+            <a class="button button-secondary" href="https://github.com/Vict-or853/yomikomi-tana" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 18 3 12l6-6M15 6l6 6-6 6"/>
+              </svg>
+              Ver codigo
+            </a>
+          </div>
         </div>
-        <ul style="list-style: none; padding: 0; margin: 0; opacity: 0.8; line-height: 2;">
-          <li id="ch1">v [+] Lanzamiento oficial Freeware.</li>
-          <li id="ch2">v [+] Motor Auto-Crop inteligente.</li>
-          <li id="ch3">v [+] Soporte multi-idioma integrado.</li>
-        </ul>
+      </section>
+
+      <section class="proof-strip" aria-label="Resumen del producto">
+        <div>
+          <strong>EPUB y CBZ</strong>
+          <span>formatos de salida</span>
+        </div>
+        <div>
+          <strong>100% offline</strong>
+          <span>procesamiento local</span>
+        </div>
+        <div>
+          <strong>RTL</strong>
+          <span>lectura manga nativa</span>
+        </div>
+        <div>
+          <strong>ES / EN / PT / JP</strong>
+          <span>interfaz multi-idioma</span>
+        </div>
+      </section>
+
+      <section class="section feature-section" id="funciones" aria-labelledby="features-title">
+        <div class="section-heading">
+          <p class="eyebrow">Optimizado para lectura digital</p>
+          <h2 id="features-title">Del archivo comprimido al tomo limpio</h2>
+          <p>
+            La aplicacion esta pensada para colecciones locales: abre archivos grandes, detecta capitulos,
+            prepara portadas y ajusta imagenes para pantallas E-Ink o tablets.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 14V6a2 2 0 0 1 2-2h8m6 6v8a2 2 0 0 1-2 2h-8M14 4h6v6M4 14h6v6"/></svg>
+            </span>
+            <h3>Auto-crop inteligente</h3>
+            <p>Recorta bordes blancos o negros para que cada pagina use mejor la pantalla.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v18M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/></svg>
+            </span>
+            <h3>Division de paginas dobles</h3>
+            <p>Separa escaneos horizontales en paginas verticales mas comodas para leer.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 4h8m-8 16h8M10 4v16m4-16v16M5 8h14M5 16h14"/></svg>
+            </span>
+            <h3>Modo webtoon</h3>
+            <p>Corta tiras largas de scroll en paginas individuales y ordenadas.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20 6H8a4 4 0 0 0 0 8h8a4 4 0 0 1 0 8H4M8 10 4 6l4-4M16 18l4 4-4 4"/></svg>
+            </span>
+            <h3>Lectura manga RTL</h3>
+            <p>Configura EPUB de derecha a izquierda para mantener el sentido original.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm3 15h4"/></svg>
+            </span>
+            <h3>Perfiles de dispositivo</h3>
+            <p>Ajustes para Kindle, Kobo y otros lectores con control de gamma y color.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2v20M5 7h14M5 17h14M7 2c-3 4-3 16 0 20M17 2c3 4 3 16 0 20"/></svg>
+            </span>
+            <h3>Sin nube obligatoria</h3>
+            <p>Tus archivos se procesan en tu equipo, ideal para bibliotecas privadas.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section flow-section" id="flujo" aria-labelledby="flow-title">
+        <div class="section-heading">
+          <p class="eyebrow">Flujo de trabajo</p>
+          <h2 id="flow-title">Cuatro pasos, un tomo listo</h2>
+        </div>
+        <div class="timeline">
+          <article>
+            <span>01</span>
+            <h3>Carga</h3>
+            <p>Importa ZIP, RAR, CBZ, CBR o una carpeta con paginas sueltas.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Organiza</h3>
+            <p>Detecta capitulos, define rangos y prepara metadatos del manga.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Ajusta</h3>
+            <p>Activa recorte, division, gamma, color, portada y lectura RTL.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Exporta</h3>
+            <p>Genera EPUB para e-readers o CBZ para tablets y visores de comics.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section interface-section" aria-labelledby="interface-title">
+        <div class="section-heading">
+          <p class="eyebrow">Interfaz real</p>
+          <h2 id="interface-title">Control visual antes de convertir</h2>
+          <p>
+            La vista previa permite comprobar portada, paginas detectadas, capitulos y opciones de salida
+            antes de iniciar el trabajo final.
+          </p>
+        </div>
+        <div class="screenshot-grid">
+          <figure>
+            <img src="assets/yomikomi-main.png" alt="YomiKomi Tana con un manga cargado y opciones de salida visibles">
+            <figcaption>Proyecto cargado con vista previa, capitulos y conversion a EPUB.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/yomikomi-empty.png" alt="YomiKomi Tana en estado inicial antes de abrir un archivo">
+            <figcaption>Estado inicial limpio para iniciar una nueva conversion.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section download-section" id="descarga" aria-labelledby="download-title">
+        <div>
+          <p class="eyebrow">Version actual</p>
+          <h2 id="download-title">YomiKomi Tana v1.0.0</h2>
+          <p>
+            Disponible como instalador para Windows. El ejecutable fue pensado para usuarios que solo quieren
+            abrir la app y convertir su biblioteca sin configurar Python.
+          </p>
+        </div>
+        <div class="download-panel">
+          <div class="release-line">
+            <span>Windows 10 / 11</span>
+            <strong>Installer .exe</strong>
+          </div>
+          <a class="button button-primary" href="https://github.com/Vict-or853/yomikomi-tana/releases" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2"/>
+            </svg>
+            Ir a releases
+          </a>
+          <p>
+            Nota: Windows puede mostrar una alerta de aplicacion desconocida en proyectos nuevos compilados con PyInstaller.
+          </p>
+        </div>
+      </section>
+
+      <section class="section repo-section" id="repo" aria-labelledby="repo-title">
+        <div class="section-heading">
+          <p class="eyebrow">Repositorio mas sano</p>
+          <h2 id="repo-title">Preparado para Pages, issues y releases</h2>
+          <p>
+            Esta carpeta incluye una base de GitHub mas ordenada: plantillas de issues, pull requests,
+            workflow de Pages, changelog y una guia de contribucion.
+          </p>
+        </div>
+        <div class="repo-grid">
+          <article>
+            <h3>GitHub Pages</h3>
+            <p>Publica esta web estatica desde Actions sin instalar dependencias.</p>
+          </article>
+          <article>
+            <h3>Issues claros</h3>
+            <p>Separacion entre bugs y solicitudes de funciones para recibir reportes utiles.</p>
+          </article>
+          <article>
+            <h3>Historial legible</h3>
+            <p>Guia de ramas, commits y releases para que el proyecto crezca sin ruido.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>YomiKomi Tana es un proyecto freeware creado por <a href="https://github.com/Vict-or853" rel="noreferrer">@Vict-or853</a>.</p>
+      <div>
+        <a href="https://github.com/Vict-or853/yomikomi-tana/issues" rel="noreferrer">Reportar bug</a>
+        <a href="https://ko-fi.com/vict_or853" rel="noreferrer">Apoyar en Ko-fi</a>
       </div>
-    </section>
-
-    <footer>
-      <p id="footer_text">© 2026 YomiKomi Tana | Desarrollado por <strong>@Vict-or853</strong></p>
-      <a href="https://ko-fi.com/Vict-or853" target="_blank" class="kofi-btn">Invítame a un café en Ko-fi ☕</a>
     </footer>
-  </div>
-
-  <script>
-    const t = {
-      es: {
-        nav_btn: "Descargar", badge: "🚀 Proyecto Freeware para la comunidad",
-        hero_title: "Manga perfecto para tu <span>E-Reader</span>",
-        hero_desc: "Optimiza tus tomos favoritos. Quita márgenes, divide páginas dobles y convierte a EPUB/CBZ con un solo clic.",
-        hero_btn: "Empezar ahora — Es Gratis",
-        demo_title: "Mira la magia en <span>acción</span>",
-        f1_title: "Auto-Crop Inteligente", f1_desc: "Detecta y elimina bordes blancos innecesarios automáticamente.",
-        f2_title: "Modo Manga (RTL)", f2_desc: "Lectura de derecha a izquierda nativa para una experiencia auténtica.",
-        f3_title: "Split Double Pages", f3_desc: "Corta spreads automáticamente para lectura vertical fluida.",
-        f4_title: "Especial para Webtoons", f4_desc: "Convierte scroll infinito en páginas numeradas perfectas.",
-        comm_title: "Únete a la <span>Comunidad</span>",
-        c1_t: "Reportar Bug", c1_d: "Ayúdanos a mejorar reportando errores.",
-        c2_t: "Foro de Ayuda", c2_d: "Resuelve tus dudas con otros usuarios.",
-        dl_title: "Descargar YomiKomi Tana",
-        footer_text: "© 2026 YomiKomi Tana | Desarrollado por @Vict-or853"
-      },
-      en: {
-        nav_btn: "Download", badge: "🚀 Freeware project for the community",
-        hero_title: "Perfect Manga for your <span>E-Reader</span>",
-        hero_desc: "Optimize your favorite volumes. Crop margins, split double pages, and convert to EPUB/CBZ in one click.",
-        hero_btn: "Start now — It's Free",
-        demo_title: "See the magic in <span>action</span>",
-        f1_title: "Smart Auto-Crop", f1_desc: "Automatically detects and removes unnecessary white borders.",
-        f2_title: "Manga Mode (RTL)", f2_desc: "Native right-to-left reading for an authentic experience.",
-        f3_title: "Split Double Pages", f3_desc: "Automatically cuts spreads for fluid vertical reading.",
-        f4_title: "Webtoon Ready", f4_desc: "Converts infinite scroll into perfectly numbered pages.",
-        comm_title: "Join the <span>Community</span>",
-        c1_t: "Report Bug", c1_d: "Help us improve by reporting errors.",
-        c2_t: "Help Forum", c2_d: "Solve your doubts with other users.",
-        dl_title: "Download YomiKomi Tana",
-        footer_text: "© 2026 YomiKomi Tana | Developed by @Vict-or853"
-      },
-      pt: {
-        nav_btn: "Baixar", badge: "🚀 Projeto Freeware para a comunidade",
-        hero_title: "Mangá perfeito para o seu <span>E-Reader</span>",
-        hero_desc: "Otimize seus volumes favoritos. Recorte margens, divida páginas duplas e converta para EPUB/CBZ em um clique.",
-        hero_btn: "Começar agora — É Grátis",
-        demo_title: "Veja a mágica em <span>ação</span>",
-        f1_title: "Auto-Crop Inteligente", f1_desc: "Detecta e remove bordas brancas desnecessárias automaticamente.",
-        f2_title: "Modo Mangá (RTL)", f2_desc: "Leitura nativa da direita para a esquerda para uma experiência autêntica.",
-        f3_title: "Split Double Pages", f3_desc: "Corta páginas duplas automaticamente para leitura vertical fluida.",
-        f4_title: "Especial para Webtoons", f4_desc: "Converte scroll infinito em páginas numeradas perfeitas.",
-        comm_title: "Junte-se à <span>Comunidade</span>",
-        c1_t: "Reportar Bug", c1_d: "Ajude-nos a melhorar relatando erros.",
-        c2_t: "Fórum de Ajuda", c2_d: "Resolva suas dúvidas com outros usuários.",
-        dl_title: "Baixar YomiKomi Tana",
-        footer_text: "© 2026 YomiKomi Tana | Desenvolvido por @Vict-or853"
-      },
-      ja: {
-        nav_btn: "ダウンロード", badge: "🚀 コミュニティのためのフリーウェアプロジェクト",
-        hero_title: "あなたの<span>Eリーダー</span>に最適な漫画を",
-        hero_desc: "お気に入りの巻を最適化。余白のカット、見開き分割、EPUB/CBZ変換をワンクリックで。",
-        hero_btn: "今すぐ開始 — 無料です",
-        demo_title: "魔法が<span>動く</span>様子を見る",
-        f1_title: "スマート自動クロップ", f1_desc: "不要な白枠を自動的に検出して削除します。",
-        f2_title: "漫画モード (RTL)", f2_desc: "本格的な体験のためのネイティブな右から左への読書設定。",
-        f3_title: "見開き分割", f3_desc: "垂直方向の読書のために見開きを自動的にカットします。",
-        f4_title: "Webtoon対応", f4_desc: "無限スクロールを完璧に番号付けされたページに変換します。",
-        comm_title: "<span>コミュニティ</span>に参加する",
-        c1_t: "バグ報告", c1_d: "エラーを報告して改善にご協力ください。",
-        c2_t: "ヘルプフォーラム", c2_d: "他のユーザーと疑問を解決しましょう。",
-        dl_title: "YomiKomi Tanaをダウンロード",
-        footer_text: "© 2026 YomiKomi Tana | 開発者 @Vict-or853"
-      }
-    };
-
-    document.getElementById("lang").onchange = e => {
-      let l = t[e.target.value];
-      for (let k in l) {
-        let el = document.getElementById(k);
-        if (el) el.innerHTML = l[k];
-      }
-    };
-  </script>
-</body>
+  </body>
 </html>
