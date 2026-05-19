@@ -1,42 +1,37 @@
-# Contribuir a YomiKomi Tana
+# Cómo colaborar con YomiKomi Tana
 
-Gracias por querer mejorar YomiKomi Tana. Para que el repositorio siga limpio, cada cambio debería tener un objetivo concreto y poder revisarse sin contexto extra.
+YomiKomi Tana se distribuye actualmente como freeware cerrado. Por ahora no se aceptan contribuciones directas al código fuente.
 
-## Flujo recomendado
+Sí se aceptan reportes y sugerencias que ayuden a mejorar la aplicación, la documentación pública y la compatibilidad con dispositivos.
 
-1. Abre o revisa un issue antes de empezar si el cambio afecta comportamiento.
-2. Crea una rama desde `main` usando un nombre descriptivo.
-3. Haz commits pequeños con mensajes claros.
-4. Actualiza `CHANGELOG.md` si el cambio afecta a usuarios.
-5. Abre un pull request con capturas o notas de prueba.
+## Qué se puede enviar
 
-## Nombres de ramas
+- Reportes de errores.
+- Ideas de funciones.
+- Mejoras de documentación pública.
+- Traducciones de textos públicos.
+- Reportes de compatibilidad con dispositivos.
+- Sugerencias sobre EPUB/CBZ.
+- Problemas con instalador o SmartScreen.
+- Casos de uso para la versión móvil planeada.
 
-- `feature/nombre-corto` para funciones nuevas.
-- `fix/nombre-corto` para bugs.
-- `docs/nombre-corto` para documentación.
-- `release/vX.Y.Z` para preparar una versión.
+## Qué incluir en un reporte
 
-## Mensajes de commit
+- Versión de YomiKomi Tana.
+- Sistema operativo o dispositivo.
+- Tipo de archivo usado.
+- Formato de salida esperado.
+- Pasos para reproducir.
+- Resultado esperado y resultado obtenido.
+- Capturas o logs si existen.
 
-Usa una convención corta:
+## Contenido protegido
 
-```text
-tipo: resumen breve
-```
+No subas manga, cómics, webtoons, imágenes privadas ni archivos protegidos por derechos de autor. Si necesitas explicar un problema, usa contenido ficticio, propio o autorizado.
 
-Tipos sugeridos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `build`, `chore`.
+## Issues disponibles
 
-Ejemplos:
-
-```text
-feat: add kindle paperwhite profile
-fix: preserve rtl metadata in epub output
-docs: improve release instructions
-```
-
-## Antes de abrir un PR
-
-- Verifica que la app o la web abra correctamente.
-- Evita subir archivos privados, tomos de manga, builds pesados o instaladores fuera de Releases.
-- Incluye pasos de prueba manual cuando no haya tests automáticos.
+- Bug report.
+- Feature request.
+- Mobile app request.
+- Device compatibility.

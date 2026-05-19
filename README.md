@@ -1,60 +1,86 @@
 # YomiKomi Tana
 
-YomiKomi Tana es una aplicación de escritorio gratuita y 100% offline para convertir, recortar y organizar manga, cómics y webtoons locales en formatos listos para e-readers y tablets.
+YomiKomi Tana es una aplicación freeware para Windows enfocada en convertir manga, cómics y webtoons locales a formatos de lectura digital como EPUB y CBZ.
 
-[Descargar última versión](https://github.com/Vict-or853/yomikomi-tana/releases) | [Reportar un bug](https://github.com/Vict-or853/yomikomi-tana/issues/new?template=bug_report.yml) | [Apoyar en Ko-fi](https://ko-fi.com/vict_or853)
+[Descargar desde Releases](https://github.com/Vict-or853/yomikomi-tana/releases) | [Reportar un problema](https://github.com/Vict-or853/yomikomi-tana/issues/new?template=bug_report.md) | [Solicitar función](https://github.com/Vict-or853/yomikomi-tana/issues/new?template=feature_request.md)
 
-![Interfaz de YomiKomi Tana](assets/yomikomi-main.png)
+## Estado del proyecto
+
+YomiKomi Tana está en desarrollo inicial y se publica como versión freeware beta. La app es gratuita para uso personal, pero no es software open source por ahora y el código fuente no se distribuye públicamente.
+
+La versión móvil está planeada/en desarrollo y todavía no tiene release pública.
+
+## Ediciones
+
+### YomiKomi Tana Desktop
+
+Versión de escritorio para Windows. Está pensada para convertir archivos locales de manga, cómics y webtoons, preparar tomos para Kindle, Kobo, tablets y lectores EPUB, y organizar bibliotecas personales sin subir archivos a internet.
+
+### YomiKomi Tana Mobile
+
+Versión móvil planeada para usuarios que no tienen computadora. Su objetivo es ofrecer lectura local, conversión básica, organización de biblioteca, perfiles para pantallas móviles y optimización para webtoons. Todavía no está disponible en releases ni tiendas de aplicaciones.
 
 ## Funciones principales
 
-| Función | Para qué sirve |
-| --- | --- |
-| Auto-crop inteligente | Recorta márgenes blancos o negros para aprovechar mejor la pantalla. |
-| División de páginas dobles | Separa escaneos horizontales en páginas verticales. |
-| Modo webtoon | Convierte tiras largas en páginas individuales. |
-| Modo manga RTL | Genera EPUB con lectura de derecha a izquierda. |
-| Perfiles de dispositivo | Ajusta salida para Kindle, Kobo y tablets. |
-| Procesamiento offline | Tus archivos se quedan en tu equipo. |
+- Conversión local a EPUB.
+- Conversión local a CBZ.
+- Auto-crop de márgenes.
+- División de páginas dobles.
+- Modo manga derecha-a-izquierda.
+- Perfiles para dispositivos.
+- Organización básica de biblioteca.
+- Procesamiento offline.
 
-## Descarga
+## Formatos compatibles
 
-1. Entra a [Releases](https://github.com/Vict-or853/yomikomi-tana/releases).
-2. Descarga el instalador de la versión más reciente.
-3. Ejecuta la app en Windows 10 o Windows 11.
+Entrada:
 
-Windows puede mostrar una advertencia de SmartScreen en aplicaciones nuevas. Descarga siempre desde el repositorio oficial.
+- Carpetas de imágenes.
+- JPG/JPEG.
+- PNG.
+- WEBP.
+- ZIP/CBZ.
+- RAR/CBR si la versión instalada incluye soporte compatible.
 
-## Formatos
+Salida:
 
-Entradas compatibles: carpetas, `.zip`, `.rar`, `.cbz`, `.cbr`.
-
-Salidas compatibles: `.epub`, `.cbz`.
+- EPUB.
+- CBZ.
 
 ## Privacidad
 
-YomiKomi Tana procesa los archivos localmente. No necesitas subir tu biblioteca a la nube para convertirla.
+YomiKomi Tana procesa los archivos localmente. No sube mangas, cómics, webtoons ni imágenes a servidores externos, y la versión actual documentada no incluye telemetría.
 
-## Sitio web
+Si en el futuro se agregan funciones online o telemetría, deberán documentarse antes de publicarse.
 
-La página del proyecto vive en `index.html` y se publica con GitHub Pages desde la rama principal.
+## Descarga
 
-Para verla localmente:
+Descarga YomiKomi Tana únicamente desde la página oficial de [GitHub Releases](https://github.com/Vict-or853/yomikomi-tana/releases).
 
-```powershell
-python -m http.server 8001 --bind 127.0.0.1
-```
+Windows SmartScreen puede mostrar advertencias en apps nuevas, sin firma digital o con pocas descargas. Esa advertencia debe revisarse con cuidado y no debe interpretarse como prueba automática de peligro.
 
-Después abre `http://127.0.0.1:8001/`.
+## Seguridad
 
-## Comunidad
+- Descarga solo desde releases oficiales.
+- Verifica el hash SHA-256 publicado en cada release.
+- No instales copias republicadas por terceros.
+- Reporta problemas de seguridad siguiendo [SECURITY.md](SECURITY.md).
 
-Los reportes de bugs, ideas de funciones y mejoras de documentación son bienvenidos. Al abrir un issue, incluye versión de la app, sistema operativo, pasos para reproducir y capturas cuando aplique.
+## Aviso legal
 
-## Mantenimiento
+YomiKomi Tana no incluye, vende ni distribuye manga, cómics, webtoons ni ningún contenido protegido por derechos de autor. La aplicación solo procesa archivos locales proporcionados por el usuario.
 
-El repositorio incluye plantillas de issues, plantilla de pull request, changelog, configuración de GitHub Pages y una guía corta de flujo de trabajo en [docs/git-workflow.md](docs/git-workflow.md).
+El usuario es responsable de usar contenido propio, libre de derechos o autorizado.
 
 ## Licencia
 
-YomiKomi Tana se distribuye como freeware. El código, los textos y los assets conservan los derechos de su autor salvo que se indique una licencia diferente.
+YomiKomi Tana se distribuye como freeware. No es software open source por ahora. Consulta [LICENSE.md](LICENSE.md) y [EULA.md](EULA.md).
+
+## Reportar errores
+
+Usa GitHub Issues para reportar errores, compatibilidad de dispositivos, problemas con instalador o sugerencias:
+
+- [Reportar bug](https://github.com/Vict-or853/yomikomi-tana/issues/new?template=bug_report.md)
+- [Solicitar función](https://github.com/Vict-or853/yomikomi-tana/issues/new?template=feature_request.md)
+- [Sugerir mejora móvil](https://github.com/Vict-or853/yomikomi-tana/issues/new?template=mobile_app_request.md)
+- [Reportar compatibilidad](https://github.com/Vict-or853/yomikomi-tana/issues/new?template=device_compatibility.md)
