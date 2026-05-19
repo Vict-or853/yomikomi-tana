@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 680" role="img" aria-label="Vista conceptual de YomiKomi Tana">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#172033"/>
+      <stop offset="1" stop-color="#070a12"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="980" height="680" fill="url(#bg)"/>
+  <rect x="34" y="34" width="912" height="612" rx="28" fill="#0d1320" stroke="#2a3854" stroke-width="2"/>
+  <rect x="34" y="34" width="912" height="58" rx="28" fill="#111a2b"/>
+  <circle cx="74" cy="63" r="8" fill="#ef4444"/>
+  <circle cx="103" cy="63" r="8" fill="#f59e0b"/>
+  <circle cx="132" cy="63" r="8" fill="#22c55e"/>
+  <text x="178" y="70" fill="#f6f8ff" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">YomiKomi Tana Desktop</text>
+  <rect x="68" y="126" width="246" height="468" rx="18" fill="#111827" stroke="#2a3854"/>
+  <text x="96" y="170" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Biblioteca local</text>
+  <rect x="96" y="200" width="190" height="36" rx="10" fill="#1f2a44"/>
+  <rect x="96" y="254" width="190" height="36" rx="10" fill="#1f2a44"/>
+  <rect x="96" y="308" width="190" height="36" rx="10" fill="#1f2a44"/>
+  <rect x="96" y="388" width="76" height="106" rx="10" fill="#24324f"/>
+  <rect x="188" y="388" width="76" height="106" rx="10" fill="#24324f"/>
+  <path d="M112 464h44m48-20h44M112 424h44m48 48h44" stroke="#22d3ee" stroke-width="5" stroke-linecap="round" opacity=".72"/>
+  <rect x="350" y="126" width="292" height="468" rx="18" fill="#0f1726" stroke="#2a3854"/>
+  <text x="382" y="170" fill="#f6f8ff" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Vista previa ficticia</text>
+  <rect x="402" y="206" width="188" height="278" rx="16" fill="#f6f8ff"/>
+  <path d="M426 440c32-58 74-82 126-128 18-16 30-40 38-74" stroke="#0d1320" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <path d="M430 272h90M430 318h74M430 364h112" stroke="#8b5cf6" stroke-width="10" stroke-linecap="round"/>
+  <text x="430" y="525" fill="#a8b3c7" font-family="Segoe UI, Arial, sans-serif" font-size="16">Contenido de ejemplo</text>
+  <rect x="678" y="126" width="234" height="468" rx="18" fill="#111827" stroke="#2a3854"/>
+  <text x="706" y="170" fill="#22d3ee" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Salida</text>
+  <rect x="706" y="206" width="178" height="52" rx="12" fill="url(#accent)"/>
+  <text x="744" y="239" fill="#06101a" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="800">EPUB</text>
+  <rect x="706" y="282" width="178" height="52" rx="12" fill="#1f2a44"/>
+  <text x="744" y="315" fill="#f6f8ff" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="800">CBZ</text>
+  <path d="M706 392h178M706 434h150M706 476h122" stroke="#2dd4bf" stroke-width="8" stroke-linecap="round"/>
+  <rect x="706" y="524" width="178" height="42" rx="12" fill="#22d3ee"/>
+  <text x="736" y="552" fill="#06101a" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="800">Convertir local</text>
+</svg>
